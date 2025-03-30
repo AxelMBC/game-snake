@@ -16,7 +16,6 @@ public class Snake : MonoBehaviour
     Vector2 dir;
 
     public Text points;
-    // Start is called before the first frame update
     void Start()
     {
         timeBetweenMovements = 0.5f;
@@ -104,7 +103,6 @@ public class Snake : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -129,10 +127,9 @@ public class Snake : MonoBehaviour
         if (timeBetweenMovements < passedTime && isAlive)
         {
             passedTime = 0;
-            // Move
+
             Vector3 newPosition = head.GetComponent<Transform>().position + new Vector3(dir.x, dir.y, 0);
 
-            // Check if collides with border
             if (newPosition.x >= xSize / 2
             || newPosition.x <= -xSize / 2
             || newPosition.y >= ySize / 2
@@ -141,7 +138,6 @@ public class Snake : MonoBehaviour
                 gameOver();
             }
 
-            // check if collides with any tail tile
             foreach (var item in tail)
             {
                 if (item.transform.position == newPosition)
